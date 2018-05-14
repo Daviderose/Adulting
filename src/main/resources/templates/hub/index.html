@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="${title}"></title>
-</head>
 
-<h1>Let's Get Adulting!</h1>
-<h3>You Got This!</h3>
+<head th:replace="fragments :: head"></head>
 
-<p>Pick an area to level up in:</p>
-<ul>
-    <li><a href="/social">The Social Arena</a></li>
-    <li><a href="/health">The Halls Of Health</a></li>
-    <li><a href="/schedule">The Maze Of Scheduling</a></li>
-    <li><a href="/money">The Misty Mountains Of Money</a></li>
-    <li><a href="/learning">The Snowy Dunes Of Learning</a></li>
-    <li><a href="/homeandlawn">The Jungles Of Home And Lawn</a></li>
-    <li><a href="/generosity">The Fields Of Generosity</a></li>
-</ul>
+<body id="bootstrap-override" class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/>
+
+<div class="buttons-container">
+    <div class="main-button" >
+       <a href="/social" onmouseover="highlightSocial()" onmouseout="unhighlightSocial()">
+           <img class="img-fluid" id="social-button" src="http://localhost:8080/images/Adulting- social button.png" />
+       </a>
+    </div>
+    <div class="main-button">
+        <a  href="/health" onmouseover="highlightHealth()" onmouseout="unhighlightHealth()">
+            <img class="img-fluid" id="health-button" src="http://localhost:8080/images/Adulting- health button.png"/>
+        </a>
+    </div>
+    <div class="main-button">
+        <a  href="/schedule" onmouseover="highlightSchedule()" onmouseout="unhighlightSchedule()">
+            <img class="img-fluid" id="schedule-button" src="http://localhost:8080/images/Adulting- schedule button.png"/>
+        </a>
+    </div>
+    <div class="main-button">
+        <a  href="/money" onmouseover="highlightMoney()" onmouseout="unhighlightMoney()">
+            <img class="img-fluid" id="money-button" src="http://localhost:8080/images/Adulting- money button.png"/>
+        </a>
+    </div>
+    <div class="main-button" onmouseover="highlightLearning()" onmouseout="unhighlightLearning()">
+        <a  href="/learning" >
+            <img class="img-fluid" id="learning-button" src="http://localhost:8080/images/Adulting- learning button.png"/>
+        </a>
+    </div>
+    <div class="main-button">
+        <a  href="/homeandlawn" onmouseover="highlightHome()" onmouseout="unhighlightHome()">
+            <img class="img-fluid" id="home-button" src="http://localhost:8080/images/Adulting- home button.png"/>
+        </a>
+    </div>
+    <div class="main-button">
+        <a  href="/generosity" onmouseover="highlightGenerosity()" onmouseout="unhighlightGenerosity()">
+            <img class="img-fluid" id="generosity-button" src="http://localhost:8080/images/Adulting- generosity button.png"/>
+        </a>
+    </div>
+    <h4>Choose Your Adventure...</h4>
+</div>
 
 </body>
+
 </html>

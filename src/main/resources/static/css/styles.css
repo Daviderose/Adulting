@@ -1,0 +1,28 @@
+
+h1 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    font: sans-serif;
+}
+
+#bootstrap-override .buttons-container {
+    background-image: url("http://localhost:8080/images/Adulting- Blue Knight.png");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: left top;
+    background-size: 30%;
+    padding-bottom: 100px;
+}
+
+#bootstrap-override .main-button {
+    text-align: center;
+}
+
+#bootstrap-override .main-button img {
+    width: 40%;
+}
+
+

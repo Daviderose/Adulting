@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="${title}"></title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
 
 <h1>Welcome To The Jungles Of Home And Lawn</h1>
+
+<table class="table">
+
+    <tr>
+        <th>Quest Name</th>
+        <th>Experience Points</th>
+    </tr>
+
+    <tr th:each="quest : ${quests}">
+        <td th:text="${quest.name}"></td>
+        <td th:text="${quest.points}"></td>
+    </tr>
+
+</table>
 
 </body>
 </html>
