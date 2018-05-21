@@ -9,6 +9,12 @@
 
 <img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/>
 
+
+    <h1 th:object = "${username}" th:text = "'Welcome ' + *{username}"></h1>
+    <h4 th:object = "${username}" th:text = "'Your level: ' + *{level}"></h4>
+    <h4 th:object = "${username}" th:text = "'Your experience points: ' + *{experience}"></h4>
+
+
 <div class="buttons-container">
     <div class="main-button" >
        <a href="/social" onmouseover="highlightSocial()" onmouseout="unhighlightSocial()">
@@ -47,6 +53,8 @@
     </div>
     <h4>Choose Your Adventure...</h4>
 </div>
+
+<a href = "/logout">Logout</a>
 
 </body>
 

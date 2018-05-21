@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -27,10 +28,14 @@ public class HubController {
     private CategoryDao categoryDao;
 
 
-
     @RequestMapping(value = "")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session ) {
 
+        if (session.getAttribute("username") == (null)) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("username", session.getAttribute("username"));
         model.addAttribute("title", "The Hub");
         return "hub/index";
     }

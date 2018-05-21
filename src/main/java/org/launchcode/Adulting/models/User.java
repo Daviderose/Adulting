@@ -36,10 +36,12 @@ public class User {
 
     // constructors
 
-    public User(String username, String password, String verify) {
+    public User(String username, String password, String verify, int experience, int level) {
         this.username = username;
         this.password = password;
         this.verify = verify;
+        this.experience = experience;
+        this.level = level;
     }
 
     public User() { }

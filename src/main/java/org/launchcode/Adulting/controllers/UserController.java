@@ -1,15 +1,17 @@
 package org.launchcode.Adulting.controllers;
 
+import org.hibernate.SessionFactory;
 import org.launchcode.Adulting.models.User;
 import org.launchcode.Adulting.models.data.UserDao;
-import org.launchcode.Adulting.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -20,44 +22,47 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private UserRepository userRepository;
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String displayLoginForm(Model model) {
 
         model.addAttribute("title", "Login");
-        model.addAttribute(new User());
         return "user/login";
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String processLoginForm(Model model, @ModelAttribute @Valid User user, Errors errors ) {
+    public String processLoginForm(Model model, @RequestParam String username, @RequestParam String password,
+                                   RedirectAttributes redirectAttributes, HttpSession session) {
 
-        User username = userRepository.findByUsername(user.getUsername());
-        User password = userRepository.findByPassword(user.getPassword());
+        User foundUser = userDao.findByUsername(username);
 
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Login");
-            model.addAttribute(user);
-            return "user/login";
+        if (username.isEmpty() || password.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Username or Password cannot be empty.");
+            return "redirect:/login";
         }
 
-        if (username.equals(user.getPassword()) && password.equals(user.getPassword())) {
-            model.addAttribute("username", user.getUsername());
-            return "user/index";
+        if (foundUser.getUsername().equals(username) && foundUser.getPassword().equals(password)) {
+            session.setAttribute("username", foundUser);
+            redirectAttributes.addFlashAttribute("message", "Logged in.");
+            return "redirect:/hub";
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Username or Password is incorrect.");
+            return "redirect:/login";
         }
 
-        else {
-            model.addAttribute("title", "Login");
-            model.addAttribute(user);
-            return "user/login";
-        }
+        //TODO validate user
+        //TODO Add error messages
 
     }
 
+    @RequestMapping(value = "logout", method = RequestMethod.GET)
+    public String logoutUser(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
+    }
+
     @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String DisplayRegisterForm(Model model) {
+    public String displayRegisterForm(Model model) {
 
         model.addAttribute("title", "Register");
         model.addAttribute(new User());
@@ -66,7 +71,7 @@ public class UserController {
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String ProcessRegisterForm(@ModelAttribute @Valid User newUser,
-                                   Errors errors, Model model) {
+                                   Errors errors, Model model, HttpSession session ) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
@@ -77,6 +82,7 @@ public class UserController {
         newUser.setExperience(0);
         newUser.setLevel(1);
         userDao.save(newUser);
+        session.setAttribute("username", newUser);
         return "redirect:/hub";
     }
 }
