@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+// Quest Object Table
 @Entity
 public class Quest {
 
@@ -16,6 +18,7 @@ public class Quest {
     private int id;
 
     @NotNull
+    @Size (min = 3)
     private String name;
 
     @NotNull

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+// User Object Table
 @Entity
 public class User {
 
@@ -93,6 +94,7 @@ public class User {
         this.level = level;
     }
 
+    // Check if password and verify match.
     private void checkPassword() {
         if(this.password == null || this.verify == null){
             return;

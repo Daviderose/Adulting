@@ -1,13 +1,16 @@
+<!-- User Registration Template -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body id="bootstrap-override" class="container">
 
-<nav th:replace="fragments :: navigation"></nav>
+<a href="/hub" ><img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/></a>
 
 <h1>Create An Account</h1>
 
-<form method="post" style="max-width:600px;" th:object="${user}" >
+<h4>Already have an account? Login <a href="/login">here</a></h4>
+
+<form method="post" class="register-form" th:object="${user}" >
     <div  class="form-group">
         <label th:for="username">Username:</label>
         <input class="form-control" th:field="*{username}" />
@@ -15,16 +18,16 @@
     </div>
     <div class="form-group">
         <label th:for="password">Password:</label>
-        <input class="form-control" th:field="*{password}"/>
+        <input class="form-control" type="password" th:field="*{password}"/>
         <span th:errors="*{password}" class="error"> </span>
     </div>
     <div class="form-group">
         <label th:for="verify">Verify Password:</label>
-        <input class="form-control" th:field="*{verify}"/>
+        <input class="form-control" type="password" th:field="*{verify}"/>
         <span th:errors="*{verify}" class="error"> </span>
     </div>
 
-    <button type="submit">Create Account</button>
+    <button type="submit" class="btn btn-warning btn-lrg">Create Account</button>
 </form>
 
 </body>

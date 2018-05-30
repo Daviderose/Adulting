@@ -1,3 +1,4 @@
+<!-- Thymeleaf fragment base page -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
@@ -14,10 +15,35 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" th:fragment="navigation">
+<nav th:switch="${username.username}" class="navbar navbar-expand-sm bg-secondary navbar-dark justify-content-center fixed-bottom" th:fragment="navigation">
     <a class="navbar-brand" href="/hub">Adulting</a>
-    <a class="nav-link" href="/hub/add">Add A Quest</a>
+    <a th:case="'AdultAdmin'" class="navbar-brand" href="/hub/add">Add A Quest</a>
+    <a class="navbar-brand" href="/login">Logout</a>
 </nav>
+
+<form method="post" th:fragment="quest-list">
+    <table class="table">
+
+        <tr>
+            <th>Complete</th>
+            <th>Quest Name</th>
+            <th>Experience Points</th>
+        </tr>
+
+        <tr th:each="quest : ${quests}">
+            <td class="quest-checkbox" ><input  type="checkbox" name="questIds" th:value="${quest.id}" th:id="${quest.id}"/></td>
+            <td th:text="${quest.name}"></td>
+            <td class="quest-points" th:text="${quest.points}"></td>
+            <td><a th:href="@{'/hub/edit/' + ${quest.id}}">Edit</a></td>
+        </tr>
+
+        <input type="hidden" name="username" th:object = "${username}" th:value = "*{username}">
+
+    </table>
+    <div class="complete-quest-button">
+        <button type="submit" class="btn btn-warning">Complete Quest</button>
+    </div>
+</form>
 
 </body>
 </html>

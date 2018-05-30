@@ -1,25 +1,15 @@
+<!-- Template for "Dunes Of Learning" Page -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body id="bootstrap-override" class="container">
 
-<nav th:replace="fragments :: navigation"></nav>
+<img class="img-fluid" src="http://localhost:8080/images/Adulting- Dunes Of learning Title.png"/>
 
-<h1>Welcome To The Snowy Dunes Of Learning</h1>
 
-<table class="table">
+<form th:replace="fragments :: quest-list"></form>
 
-    <tr>
-        <th>Quest Name</th>
-        <th>Experience Points</th>
-    </tr>
-
-    <tr th:each="quest : ${quests}">
-        <td th:text="${quest.name}"></td>
-        <td th:text="${quest.points}"></td>
-    </tr>
-
-</table>
+<nav th:replace="fragments :: nav"></nav>
 
 </body>
 </html>

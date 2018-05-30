@@ -1,25 +1,14 @@
+<!-- Template for "Jungles Of Home And Lawn" Page -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body id="bootstrap-override" class="container">
 
-<nav th:replace="fragments :: navigation"></nav>
+<img class="img-fluid" src="http://localhost:8080/images/Adulting- Jungles Of Home Title.png"/>
 
-<h1>Welcome To The Jungles Of Home And Lawn</h1>
+<form th:replace="fragments :: quest-list"></form>
 
-<table class="table">
-
-    <tr>
-        <th>Quest Name</th>
-        <th>Experience Points</th>
-    </tr>
-
-    <tr th:each="quest : ${quests}">
-        <td th:text="${quest.name}"></td>
-        <td th:text="${quest.points}"></td>
-    </tr>
-
-</table>
+<nav th:replace="fragments :: nav"></nav>
 
 </body>
 </html>

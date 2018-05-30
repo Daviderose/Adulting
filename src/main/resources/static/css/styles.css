@@ -1,5 +1,10 @@
 
+// blanket styling
 h1 {
+    text-align: center;
+}
+
+h2 {
     text-align: center;
 }
 
@@ -8,21 +13,92 @@ h4 {
     font: sans-serif;
 }
 
+// styling for errors
+#bootstrap-override .error {
+    color: red;
+}
+
+// Hub index page styling
 #bootstrap-override .buttons-container {
     background-image: url("http://localhost:8080/images/Adulting- Blue Knight.png");
     background-repeat: no-repeat;
     background-origin: content-box;
-    background-position: left top;
+    background-position: left bottom;
     background-size: 30%;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
 }
 
 #bootstrap-override .main-button {
     text-align: center;
 }
 
+#bootstrap-override .user-data {
+    background-image: url("http://localhost:8080/images/Adulting- User BG.png");
+    background-origin: content-box;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: left top;
+    width: 40%;
+    background-size: 100%;
+    padding-bottom: 30px;
+
+}
+
+#bootstrap-override .user-text {
+    color: white;
+    padding-top:25px;
+}
 #bootstrap-override .main-button img {
     width: 40%;
+}
+
+// login page styling
+#bootstrap-override .login-form {
+    margin: 0 auto;
+    max-width:300px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+// register page styling
+#bootstrap-override .register-form {
+    margin: 0 auto;
+    max-width:300px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+// add page styling
+#bootstrap-override .add-form {
+    margin: 0 auto;
+    max-width:300px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 75px;
+}
+
+// edit page styling
+#bootstrap-override .edit-form {
+    margin: 0 auto;
+    max-width:600px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 75px;
+}
+
+// styling for quest lists in each zone
+#bootstrap-override .quest-checkbox {
+    padding-left: 40px;
+}
+
+#bootstrap-override .quest-points {
+    padding-left: 70px;
+}
+
+#bootstrap-override .complete-quest-button {
+    text-align: center;
 }
 
 

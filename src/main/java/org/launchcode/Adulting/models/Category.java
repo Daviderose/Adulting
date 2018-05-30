@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+// Category Object Table
 @Entity
 public class Category {
 

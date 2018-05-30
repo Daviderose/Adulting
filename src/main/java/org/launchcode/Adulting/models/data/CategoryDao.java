@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
+
+// Interfaces with Category object
 @Repository
 @Transactional
 public interface CategoryDao extends CrudRepository<Category, Integer > {

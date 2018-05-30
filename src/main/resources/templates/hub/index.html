@@ -1,3 +1,4 @@
+<!-- Template for "The Hub" page -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
@@ -5,17 +6,15 @@
 
 <body id="bootstrap-override" class="container">
 
-<nav th:replace="fragments :: navigation"></nav>
-
-<img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/>
-
-
-    <h1 th:object = "${username}" th:text = "'Welcome ' + *{username}"></h1>
-    <h4 th:object = "${username}" th:text = "'Your level: ' + *{level}"></h4>
-    <h4 th:object = "${username}" th:text = "'Your experience points: ' + *{experience}"></h4>
-
+<a href="/hub" ><img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/></a>
 
 <div class="buttons-container">
+    <div class = "user-data" th:object = "${username}">
+        <div class="user-text">
+            <h2 th:text = "'Welcome, ' + *{username}"></h2>
+            <h4  th:text = "'Level: ' + *{level} + ' ' + '  Experience: ' + *{experience}" ></h4>
+        </div>
+    </div>
     <div class="main-button" >
        <a href="/social" onmouseover="highlightSocial()" onmouseout="unhighlightSocial()">
            <img class="img-fluid" id="social-button" src="http://localhost:8080/images/Adulting- social button.png" />
@@ -51,10 +50,9 @@
             <img class="img-fluid" id="generosity-button" src="http://localhost:8080/images/Adulting- generosity button.png"/>
         </a>
     </div>
-    <h4>Choose Your Adventure...</h4>
 </div>
 
-<a href = "/logout">Logout</a>
+<nav th:replace="fragments :: nav"></nav>
 
 </body>
 

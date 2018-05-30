@@ -1,4 +1,5 @@
 
+// The following functions animate buttons on the hub index page
 function highlightSocial(){
     document.getElementById('social-button').src="http://localhost:8080/images/Adulting- social button hover.png"
 }

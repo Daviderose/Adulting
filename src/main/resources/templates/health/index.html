@@ -1,25 +1,14 @@
+<!-- Template for "Halls Of Health" Page -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="container">
+<body id="bootstrap-override"class="container">
+
+<img class="img-fluid" src="http://localhost:8080/images/Adulting- Halls Of Health Title.png"/>
+
+<form th:replace="fragments :: quest-list"></form>
 
 <nav th:replace="fragments :: navigation"></nav>
-
-<h1>Welcome To The Halls Of Health</h1>
-
-<table class="table">
-
-    <tr>
-        <th>Quest Name</th>
-        <th>Experience Points</th>
-    </tr>
-
-    <tr th:each="quest : ${quests}">
-        <td th:text="${quest.name}"></td>
-        <td th:text="${quest.points}"></td>
-    </tr>
-
-</table>
 
 </body>
 </html>

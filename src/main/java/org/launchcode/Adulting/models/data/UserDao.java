@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
-
+// Interfaces with User object
 @Repository
 @Transactional
 public interface UserDao extends CrudRepository< User, Integer > {

@@ -1,4 +1,4 @@
-<!-- Add Quest Template -->
+<!-- Edit Quest Template -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
@@ -6,21 +6,19 @@
 
 <a href="/hub" ><img class="img-fluid" src="http://localhost:8080/images/Adulting-title.png"/></a>
 
-<h4>Add A Quest</h4>
+<h4>Edit Quest</h4>
 
-<div th:switch = "${username.username}">
-<form th:case = "AdultAdmin" method="post" class="add-form" th:object="${quest}">
+
+<form method="post" class="edit-form">
+
+
     <div  class="form-group">
         <label th:for="name">Quest Name:</label>
-        <input class="form-control" th:field="*{name}" />
+        <input name="name" class="form-control" th:value="${name}" />
         <span th:errors="*{name}" class="error"> </span>
     </div>
-    <div class="form-group">
-        <label th:for="points">How many experience points?:</label>
-        <input class="form-control" th:field="*{points}" />
-        <span th:errors="*{points}" class="error"> </span>
-    </div>
 
+    <input type="hidden" th:value="${questId}" name="questId" />
 
     <div class="form-group">
         <label th:for="type">Type</label>
@@ -30,13 +28,14 @@
                     th:value="${category.id}"></option>
         </select>
     </div>
-    <button type="submit" class="btn btn-warning">Add Quest</button>
+    <button type="submit" class="btn btn-warning">Edit Quest</button>
 </form>
-    <h4 th:case = "*" class = "error">Only an administrator may add quests.</h4>
-    <h4 class="error" th:text="${message}"></h4>
-</div>
+
+<h4>*Note: Changing the type will cause the quest to appear in the appropriate zone.</h4>
 
 <nav th:replace="fragments :: navigation"></nav>
+
+
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
+// Interfaces with Quest object
 @Repository
 @Transactional
 public interface QuestDao extends CrudRepository<Quest, Integer > {
