@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import static org.launchcode.Adulting.hashing.SHA256Hashing.HashWithGuava;
+
 // User Object Table
 @Entity
 public class User {
@@ -22,11 +24,11 @@ public class User {
     private String username;
 
     @NotNull(message="invalid user id or password")
-    @Size(min=3, max=20)
+    @Size(min=3)
     private String password;
 
     @NotNull(message="does not match password")
-    @Size(min=3, max=20)
+    @Size(min=3)
     private String verify;
 
     private int experience;
@@ -65,7 +67,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = HashWithGuava(password);
         checkPassword();
     }
 
@@ -74,7 +76,7 @@ public class User {
     }
 
     public void setVerify(String verify) {
-        this.verify = verify;
+        this.verify = HashWithGuava(verify);
         checkPassword();
     }
 

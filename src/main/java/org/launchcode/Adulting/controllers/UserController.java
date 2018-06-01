@@ -1,5 +1,6 @@
 package org.launchcode.Adulting.controllers;
 
+import com.google.common.hash.Hashing;
 import org.hibernate.SessionFactory;
 import org.launchcode.Adulting.models.User;
 import org.launchcode.Adulting.models.data.UserDao;
@@ -13,7 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+
+import static org.launchcode.Adulting.hashing.SHA256Hashing.HashWithGuava;
 
 // Controller for User object
 @Controller
@@ -47,7 +51,7 @@ public class UserController {
         }
 
         // check for valid username and password
-        if (foundUser.getUsername().equals(username) && foundUser.getPassword().equals(password)) {
+        if (foundUser.getUsername().equals(username) && foundUser.getPassword().equals(HashWithGuava(password))) {
             session.setAttribute("username", foundUser);
 
             // Set users level according to experience points

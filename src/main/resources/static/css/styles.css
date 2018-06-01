@@ -1,5 +1,5 @@
 
-// blanket styling
+/* blanket styling */
 h1 {
     text-align: center;
 }
@@ -13,12 +13,12 @@ h4 {
     font: sans-serif;
 }
 
-// styling for errors
+/* styling for errors */
 #bootstrap-override .error {
     color: red;
 }
 
-// Hub index page styling
+/* Hub index page styling */
 #bootstrap-override .buttons-container {
     background-image: url("http://localhost:8080/images/Adulting- Blue Knight.png");
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ h4 {
     width: 40%;
 }
 
-// login page styling
+/* login page styling */
 #bootstrap-override .login-form {
     margin: 0 auto;
     max-width:300px;
@@ -61,7 +61,7 @@ h4 {
     padding-bottom: 20px;
 }
 
-// register page styling
+/* register page styling */
 #bootstrap-override .register-form {
     margin: 0 auto;
     max-width:300px;
@@ -70,7 +70,7 @@ h4 {
     padding-bottom: 20px;
 }
 
-// add page styling
+/* add page styling */
 #bootstrap-override .add-form {
     margin: 0 auto;
     max-width:300px;
@@ -79,7 +79,7 @@ h4 {
     padding-bottom: 75px;
 }
 
-// edit page styling
+/* edit page styling */
 #bootstrap-override .edit-form {
     margin: 0 auto;
     max-width:600px;
@@ -88,7 +88,7 @@ h4 {
     padding-bottom: 75px;
 }
 
-// styling for quest lists in each zone
+/* styling for quest lists in each zone */
 #bootstrap-override .quest-checkbox {
     padding-left: 40px;
 }
@@ -99,6 +99,10 @@ h4 {
 
 #bootstrap-override .complete-quest-button {
     text-align: center;
+}
+
+#bootstrap-override .quest-list {
+    padding-bottom: 80px;
 }
 
 
