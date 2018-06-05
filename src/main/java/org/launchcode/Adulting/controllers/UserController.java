@@ -50,6 +50,12 @@ public class UserController {
             return "redirect:/login";
         }
 
+        // If there is no username found
+        if (foundUser == null) {
+            redirectAttributes.addFlashAttribute("message", "No account found with that username.");
+            return "redirect:/login";
+        }
+
         // check for valid username and password
         if (foundUser.getUsername().equals(username) && foundUser.getPassword().equals(HashWithGuava(password))) {
             session.setAttribute("username", foundUser);
@@ -104,7 +110,9 @@ public class UserController {
             // brings user to the hub upon successful login
             redirectAttributes.addFlashAttribute("message", "Logged in.");
             return "redirect:/hub";
-        } else {
+        }
+
+        else {
             redirectAttributes.addFlashAttribute("message", "Username or Password is incorrect.");
             return "redirect:/login";
         }
